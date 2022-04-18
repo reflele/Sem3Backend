@@ -21,12 +21,12 @@ class UserFacadeTest {
     }
 
 
-    @Test
-    void getVeryfiedUser() throws AuthenticationException {
-
-        String expected = "user";
-        String actual = facade.getVeryfiedUser("user","test123").getUserName();
-
-        assertEquals(expected,actual);
-    }
+//    @Test
+//    void getVeryfiedUser() throws AuthenticationException {
+//
+//        String expected = "user";
+//        String actual = facade.getVeryfiedUser("user","test123").getUserName();
+//
+//        assertEquals(expected,actual);
+//    }
 }
