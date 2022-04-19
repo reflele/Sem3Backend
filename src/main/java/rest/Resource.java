@@ -1,7 +1,9 @@
 package rest;
 
+import com.google.gson.Gson;
 import entities.User;
 import utils.EMF_Creator;
+import utils.ParallelJokes;
 
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
@@ -14,7 +16,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Path("info")
 public class Resource {
@@ -64,5 +68,23 @@ public class Resource {
     public String getFromAdmin() {
         String thisuser = securityContext.getUserPrincipal().getName();
         return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("jokes")
+    public String getJokes() {
+
+        Gson gson = new Gson();
+
+        List<String> jokeList = new ArrayList<>();
+
+        try{
+            jokeList = ParallelJokes.getJokes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return gson.toJson(jokeList);
     }
 }
