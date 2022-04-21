@@ -69,7 +69,7 @@ public class Resource {
         String thisuser = securityContext.getUserPrincipal().getName();
         return "{\"msg\": \"Hello to (admin): " + thisuser + "\"}";
     }
-    //
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("jokes")
