@@ -98,7 +98,7 @@ public class Resource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("owners")
-    public List<String> getOwners() {
+    public String getOwners() {
 
         List<String> ownerNameList = new ArrayList<>();
 
@@ -106,7 +106,7 @@ public class Resource {
             ownerNameList.add(o.getName());
         }
 
-        return ownerNameList;
+        return gson.toJson(ownerNameList);
     }
 
 
