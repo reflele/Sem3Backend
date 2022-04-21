@@ -54,7 +54,7 @@ public class UserFacade {
     public List<Owner> getAllOwners() {
 
         EntityManager em = emf.createEntityManager();
-        List<Owner> ownerList = new ArrayList<>();
+        List<Owner> ownerList;
 
         try{
 

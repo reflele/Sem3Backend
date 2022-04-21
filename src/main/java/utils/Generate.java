@@ -14,7 +14,7 @@ public class Generate {
 
     public static void main(String[] args) {
 
-        //UserFacade facade = UserFacade.getUserFacade(EMF_Creator.createEntityManagerFactory());
+        UserFacade facade = UserFacade.getUserFacade(EMF_Creator.createEntityManagerFactory());
 
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
         EntityManager em = emf.createEntityManager();
