@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>CA2backend</artifactId>
+    <artifactId>CA2backendExercise</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>CA2backend</name>
+    <name>CA2backendExercise</name>
     <packaging>war</packaging>
 
     <properties>
