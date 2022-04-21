@@ -1,7 +1,10 @@
 package rest;
 
 import com.google.gson.Gson;
+import entities.Boat;
+import entities.Owner;
 import entities.User;
+import facades.UserFacade;
 import utils.EMF_Creator;
 import utils.ParallelJokes;
 
@@ -9,9 +12,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
@@ -24,6 +25,11 @@ import java.util.concurrent.ExecutionException;
 public class Resource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
+
+    private UserFacade userFacade = UserFacade.getUserFacade(EMF_Creator.createEntityManagerFactory());
+
+    Gson gson = new Gson();
+
     @Context
     private UriInfo context;
 
@@ -86,5 +92,31 @@ public class Resource {
         }
 
         return gson.toJson(jokeList);
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("owners")
+    public List<String> getOwners() {
+
+        List<String> ownerNameList = new ArrayList<>();
+
+        for (Owner o : userFacade.getAllOwners()) {
+            ownerNameList.add(o.getName());
+        }
+
+        return ownerNameList;
+    }
+
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("boat")
+    public Boat createBoat(String content) {
+        Boat boat = gson.fromJson(content,Boat.class);
+
+        return userFacade.createBoat(boat.getBrand(), boat.getMake(), boat.getName());
     }
 }
