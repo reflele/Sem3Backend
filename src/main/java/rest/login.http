@@ -10,3 +10,6 @@ x-access-token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOiJ1c2VyIiwiZXh
 
 ###
 GET http://localhost:8080/CA2backend_war_exploded/api/all
+
+###
+GET http://localhost:8080/CA2backend_war_exploded/api/info/jokes
