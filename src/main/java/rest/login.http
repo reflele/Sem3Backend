@@ -21,8 +21,7 @@ GET http://localhost:8080/CA2backend_war_exploded/api/info/owners
 POST http://localhost:8080/CA2backend_war_exploded/api/info/boat
 
 {
-brand: "anotherBrand",
-make: "anotherMake",
-name: "anotherName"
-
+brand: "anotherBrand2",
+make: "anotherMake2",
+name: "anotherName2"
 }
